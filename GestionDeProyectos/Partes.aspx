@@ -65,7 +65,7 @@
                 </div>
                 <div class="div5"><h4>Observaciones</h4></div>
                 <div class="div6"><h4>Tiempo</h4></div>
-                <div class="div7"><textarea ID="TextBox2" runat="server" ></textarea>
+                <div class="div7"><textarea ID="TextBox2" runat="server" class="textArea"></textarea>
                 
                 </div>
                 <div class="div8"><asp:TextBox ID="txt_tiempo" runat="server" CssClass="textarea" TextMode="Number" > </asp:TextBox> 
@@ -86,4 +86,9 @@ ValidationExpression="^\d+\.\d{0,2}$"></asp:RegularExpressionValidator>--%>
              <asp:Button id="btn_minus" Text="-1" runat="server" CssClass="buttonsum"  OnClick="btn_rest_Click"/>
         </div>
 </div>
+    <script>
+        function clear() {
+       $(".textArea").text('');
+        };
+    </script>
 </asp:Content>

@@ -26,8 +26,8 @@ namespace GestionDeProyectos
             if (!Page.IsPostBack)
             {
                 //gridtable.Visible = false;
-
                 mydate.Text = DateTime.Now.ToString("dd/MM/yyyy");
+
                 using (DataAccess da = new DataAccess())
                 {
                     List<Proyectos> list = da.GetProyectos_ID_Nombre();
@@ -46,6 +46,7 @@ namespace GestionDeProyectos
                 }
 
             }
+        
          
 
         }
@@ -69,9 +70,14 @@ namespace GestionDeProyectos
                     Label1.Visible = false;
    
                 }
-          
+                this.DropDownList_proyetos.SelectedIndex = 3;
+                this.DropDownList_tareas.Items.Clear();
+                this.txt_tiempo.Text = string.Empty;
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "active", "clear()", true);
+
+
             }
-               
+
         }
         protected void gridViewUsers_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
@@ -123,9 +129,10 @@ namespace GestionDeProyectos
             using (DataAccess da = new DataAccess())
             {
                 List<ProyectoEmpleadosTareas> pet = da.getallProyectoEmpleadoTarea();
-                ProyectoEmpleadosTareas proyectoEmpleadosTareas = pet.Last();
+     
                
                 try {
+                    ProyectoEmpleadosTareas proyectoEmpleadosTareas = pet.Last();
                     this.tarea_id = Int32.Parse(proyectoEmpleadosTareas.TAREA_ID);
                     this.tarea_id++;
 
@@ -149,7 +156,9 @@ namespace GestionDeProyectos
                 try
                 {
                     da.CreateProyectoEmpleadoTarea(peta);
-                    Page.Response.Redirect(Page.Request.Url.ToString(), true);
+                    //  Page.Response.Redirect(Page.Request.Url.ToString(), true);
+                    chargeGrid();
+                 
 
                 }
                 catch(Exception ea)

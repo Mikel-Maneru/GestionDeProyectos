@@ -39,8 +39,9 @@ namespace GestionDeProyectos
                     DropDownList_proyetos_gastos.DataSource = list_proyectos;
                     DropDownList_proyetos_gastos.SelectedIndex = list_proyectos.Count - 1;
                     DropDownList_proyetos_gastos.DataBind();
+                    chargeGrid();
                 }
-                chargeGrid();
+            
             }
         }
         protected void chargeGrid()
@@ -54,6 +55,12 @@ namespace GestionDeProyectos
                 GridViewG.DataBind();
 
             }
+            DropDownList_proyetos_gastos.SelectedIndex = 3;
+            txt_concepto.Text = string.Empty;
+            txt_coste.Text = string.Empty;
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "active", "clear()", true);
+            txt_km.Text = string.Empty;
+            chb_dieta.Checked = false;
 
         }
         protected void gridGastos_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -90,9 +97,9 @@ namespace GestionDeProyectos
             using (DataAccess da = new DataAccess())
             {
                 List<ProyectoEmpleadoGastos> gastos = da.getgastosid();
-                ProyectoEmpleadoGastos proyectoEmpleadosTareas = gastos.Last();
                 try
                 {
+                    ProyectoEmpleadoGastos proyectoEmpleadosTareas = gastos.Last();
                     this.gastos_id = Int32.Parse(proyectoEmpleadosTareas.GASTOS_ID);
                     this.gastos_id++;
                 }catch(Exception )
@@ -125,10 +132,10 @@ namespace GestionDeProyectos
                 try
                 {
                     da.CreateProyectoEmpleadoGastos(peg);
-                    Page.Response.Redirect(Page.Request.Url.ToString(), true);
-
+                    //Page.Response.Redirect(Page.Request.Url.ToString(), true);
+                    chargeGrid();
                 }
-                catch (Exception ea)
+                catch (Exception ea) 
                 {
                     Console.WriteLine(ea);
                 }

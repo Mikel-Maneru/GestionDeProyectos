@@ -76,7 +76,7 @@
                        ControlToValidate="txt_coste"              
 ValidationExpression="^\d+\.\d{0,2}$"></asp:RegularExpressionValidator>--%> </div>
                 <div class="div5G"><h4>Observacion</h4> </div>
-                <div class="div6G"><textarea ID="txt_observacion" runat="server"  ></textarea> </div>
+                <div class="div6G"><textarea ID="txt_observacion" runat="server" class="textArea" ></textarea> </div>
                 <div class="div7G"><h4>Km</h4></div>
                 <div class="div8G"><asp:TextBox ID="txt_km" runat="server" TextMode="Number"  ></asp:TextBox></div>
                 <div class="div9G"><h4>Concepto</h4></div>
@@ -97,4 +97,9 @@ ValidationExpression="^\d+\.\d{0,2}$"></asp:RegularExpressionValidator>--%> </di
              <asp:Button id="btn_minusG" Text="-1" runat="server" CssClass="buttonsum" OnClick="btn_rest_Click_gastos"/>
         </div>
 </div>
+    <script>
+        function clear() {
+       $(".textArea").text('');
+        };
+    </script>
 </asp:Content>

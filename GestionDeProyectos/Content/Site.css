@@ -23,7 +23,10 @@
     .switch{
         display:none;
     }
-}
+    .bottom-button button{
+        display:none;
+    }
+
 a:link{
     text-decoration:none;
 }
@@ -36,6 +39,7 @@ a:link{
     --color-background-2: #ECE9E6;
     --filter: brightness(0) invert(0);
     --filter-2: brightness(0) invert(1);
+    --box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .theme-dark {
@@ -47,6 +51,7 @@ a:link{
     --color-background-2: #313132;
     --filter: brightness(0) invert(1);
     --filter-2: brightness(0) invert(0);
+    --box-shadow: hsla(0, 0%, 100%, 0.35) 0px 5px 15px;
 }
 
 
@@ -450,7 +455,7 @@ input:checked + .slider:before {
     color: var(--color-text-2);
     font-size: 1.8rem;
     border: 0.5px solid var(--color-text);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: var(--box-shadow);
 }
 
     .main-content-signIn label {
